@@ -1,5 +1,5 @@
 <details>
-<Summary><b>Assignment 7</b><Summary>
+<Summary><b>Assignment 7</b></Summary>
 
 # How I implemented the [assignment checklist](https://pbp-fasilkom-ui.github.io/ganjil-2025/en/assignments/individual/assignment-7)
 
