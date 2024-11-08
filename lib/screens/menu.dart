@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:coquette_shop_mobile/widgets/left_drawer.dart';
+
 class MyHomePage extends StatelessWidget {
   final String npm = '2306256362'; 
   final String name = 'Isaac Jesse Boentoro'; 
   final String className = 'PBD KKI'; 
   final List<ItemHomepage> items = [
-    ItemHomepage("View Product List", Icons.menu, Color(0xFF8ec07c)),
-    ItemHomepage("Add Product", Icons.add, Color(0xFFd79921)),
-    ItemHomepage("Logout", Icons.logout, Color(0xFFcc241d)),
+    ItemHomepage("View Product List", Icons.menu, const Color(0xFF8ec07c)),
+    ItemHomepage("Add Product", Icons.add, const Color(0xFFd79921)),
+    ItemHomepage("Logout", Icons.logout, const Color(0xFFcc241d)),
   ];
   MyHomePage({super.key});
   @override
@@ -22,6 +24,7 @@ class MyHomePage extends StatelessWidget {
         ),
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),
+      drawer: const LeftDrawer(),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
