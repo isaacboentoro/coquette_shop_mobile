@@ -4,8 +4,9 @@ import 'package:coquette_shop_mobile/screens/productentry_form.dart';
 class ItemHomepage {
   final String name;
   final IconData icon;
+  final Color color; // Add this line
 
-  ItemHomepage(this.name, this.icon);
+  ItemHomepage(this.name, this.icon, this.color); // Update constructor
 }
 
 class ItemCard extends StatelessWidget {
@@ -18,8 +19,7 @@ class ItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      // Specify the background color of the application theme.
-      color: Theme.of(context).colorScheme.secondary,
+      color: item.color, // Update this line to use item.color
       // Round the card border.
       borderRadius: BorderRadius.circular(12),
 

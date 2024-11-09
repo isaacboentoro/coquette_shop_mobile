@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:coquette_shop_mobile/widgets/left_drawer.dart';
+import 'package:coquette_shop_mobile/widgets/product_card.dart';
 
 class MyHomePage extends StatelessWidget {
   final String npm = '2306256362'; 
@@ -102,56 +103,3 @@ class InfoCard extends StatelessWidget {
   }
 }
 
-class ItemHomepage {
-  final String name;
-  final IconData icon;
-  final Color color;
-
-  ItemHomepage(this.name, this.icon, this.color);
-}
-
-class ItemCard extends StatelessWidget {
-  final ItemHomepage item;
-
-  const ItemCard(this.item, {super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      color: item.color, // Use the item's color
-      borderRadius: BorderRadius.circular(10),
-      child: InkWell(
-        onTap: () {
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(SnackBar(
-                content: Text("You have pressed the ${item.name} button!")));
-        },
-        child: Container(
-          padding: const EdgeInsets.all(16),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  item.icon,
-                  size: 48.0,
-                  color: Colors.white,
-                ),
-                const SizedBox(height: 8.0),
-                Text(
-                  item.name,
-                  style: const TextStyle(
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}

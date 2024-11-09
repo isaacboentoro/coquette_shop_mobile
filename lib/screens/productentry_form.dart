@@ -13,6 +13,7 @@ class _ProductFormPageState extends State<ProductFormPage> {
   String _product = "";
   String _description = "";
   int _productAmount = 0;
+  int _productPrice = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,7 +73,7 @@ class _ProductFormPageState extends State<ProductFormPage> {
         },
         validator: (String? value) {
           if (value == null || value.isEmpty) {
-            return "Feelings cannot be empty!";
+            return "desciption cannot be empty!";
           }
           return null;
         },
@@ -95,16 +96,41 @@ class _ProductFormPageState extends State<ProductFormPage> {
         },
         validator: (String? value) {
           if (value == null || value.isEmpty) {
-            return "product intensity cannot be empty!";
+            return "product amount cannot be empty!";
           }
           if (int.tryParse(value) == null) {
-            return "product intensity must be a number!";
+            return "product amount must be a number!";
           }
           return null;
         },
       ),
     ),
-    
+    Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: TextFormField(
+        decoration: InputDecoration(
+          hintText: "price",
+          labelText: "product price",
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(5.0),
+          ),
+        ),
+        onChanged: (String? value) {
+          setState(() {
+            _productPrice = int.tryParse(value!) ?? 0;
+          });
+        },
+        validator: (String? value) {
+          if (value == null || value.isEmpty) {
+            return "product price cannot be empty!";
+          }
+          if (int.tryParse(value) == null) {
+            return "product price must be a number!";
+          }
+          return null;
+        },
+      ),
+    ),
     Align(
       alignment: Alignment.bottomCenter,
       child: Padding(
@@ -127,8 +153,9 @@ class _ProductFormPageState extends State<ProductFormPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text('product: $_product'),
-                  Text('Feelings: $_description'),
-                  Text('Intensity: $_productAmount')
+                  Text('description: $_description'),
+                  Text('amount: $_productAmount'),
+                  Text('price: $_productPrice'),
                 ],
               ),
             ),
