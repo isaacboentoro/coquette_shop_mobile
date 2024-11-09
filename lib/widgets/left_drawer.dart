@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:coquette_shop_mobile/screens/menu.dart';
-import 'package:coquette_shop_mobile/screens/productentry_form.dart';
+import 'package:coquette_shop_mobile/screens/product_form.dart';
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});

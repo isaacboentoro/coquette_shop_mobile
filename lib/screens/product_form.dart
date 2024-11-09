@@ -17,7 +17,7 @@ class _ProductFormPageState extends State<ProductFormPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-  appBar: AppBar(
+    appBar: AppBar(
     title: const Center(
       child: Text(
         'Add Your Product',
@@ -98,8 +98,12 @@ class _ProductFormPageState extends State<ProductFormPage> {
           if (value == null || value.isEmpty) {
             return "product amount cannot be empty!";
           }
-          if (int.tryParse(value) == null) {
+          final amount = int.tryParse(value);
+          if (amount == null) {
             return "product amount must be a number!";
+          }
+          if (amount < 0) {
+            return "product amount cannot be negative!";
           }
           return null;
         },
@@ -124,8 +128,12 @@ class _ProductFormPageState extends State<ProductFormPage> {
           if (value == null || value.isEmpty) {
             return "product price cannot be empty!";
           }
-          if (int.tryParse(value) == null) {
+          final price = int.tryParse(value);
+          if (price == null) {
             return "product price must be a number!";
+          }
+          if (price < 0) {
+            return "product price cannot be negative!";
           }
           return null;
         },
