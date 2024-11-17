@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:coquette_shop_mobile/screens/menu.dart';
 import 'package:coquette_shop_mobile/screens/product_form.dart';
+import 'package:coquette_shop_mobile/screens/list_product.dart';
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
@@ -58,6 +59,16 @@ class LeftDrawer extends StatelessWidget {
                 context,
                 MaterialPageRoute(builder: (context) => const ProductFormPage()),
               );
+            },
+          ), 
+          ListTile(
+            leading: const Icon(Icons.shopping_bag),
+            title: const Text('Product List'),
+            onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const ProductPage()),
+                );
             },
           ),
         ],
