@@ -1094,3 +1094,4 @@ graph LR;
     D --> E[Return to Login];
 ```
 
+</details>
