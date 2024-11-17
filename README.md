@@ -356,7 +356,8 @@ class MyApp extends StatelessWidget {
 
 Flutter uses a stack to manage page navigation, and as such the buttons in this application use `Navigator.pushReplacement` or `Navigator.push` to redirec the user.
 </details>
-<detials>
+
+<details>
 <Summary><b>Assignment 9</b></Summary>
 
 # How I implemented the [assignment checklist](https://pbp-fasilkom-ui.github.io/ganjil-2025/en/assignments/individual/assignment-9)
