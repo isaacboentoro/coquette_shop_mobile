@@ -3,6 +3,7 @@ import 'package:coquette_shop_mobile/models/product.dart';
 import 'package:coquette_shop_mobile/widgets/left_drawer.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
+import 'package:coquette_shop_mobile/screens/product_detail.dart';
 
 class ProductPage extends StatefulWidget {
   const ProductPage({super.key});
@@ -57,39 +58,53 @@ class _ProductPageState extends State<ProductPage> {
           } else {
             return ListView.builder(
               itemCount: snapshot.data.length,
-              itemBuilder: (_, index) => Container(
-                margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                padding: const EdgeInsets.all(20.0),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(8.0),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 2,
-                      blurRadius: 5,
-                      offset: const Offset(0, 3),
+              itemBuilder: (_, index) => InkWell(
+                onTap: () {
+                  // Navigate to the product details page
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ProductDetailPage(product: snapshot.data[index]),
                     ),
-                  ],
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "${snapshot.data[index].fields.name}",  // Changed from product to name
-                      style: const TextStyle(
-                        fontSize: 18.0,
-                        fontWeight: FontWeight.bold,
+                  );
+                },
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                  padding: const EdgeInsets.all(20.0),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(8.0),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 2,
+                        blurRadius: 5,
+                        offset: const Offset(0, 3),
                       ),
-                    ),
-                    const SizedBox(height: 10),
-                    Text("${snapshot.data[index].fields.description}"),  // Changed from feelings
-                    const SizedBox(height: 10),
-                    Text("Coquetteness: ${snapshot.data[index].fields.coquetteness}"),  // Changed from productIntensity
-                    const SizedBox(height: 10),
-                    Text("Price: ${snapshot.data[index].fields.price}")  // Changed from time
-                  ],
+                    ],
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "${snapshot.data[index].fields.name}",  // Changed from product to name
+                        style: const TextStyle(
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        "Description: ${snapshot.data[index].fields.description}",
+                        style: const TextStyle(fontSize: 14),
+                      ),
+                      const SizedBox(height: 10),
+                      Text("Coquetteness: ${snapshot.data[index].fields.coquetteness}"),  // Changed from productIntensity
+                      const SizedBox(height: 10),
+                      Text("Price: ${snapshot.data[index].fields.price}")  // Changed from time
+                    ],
+                  ),
                 ),
               ),
             );
